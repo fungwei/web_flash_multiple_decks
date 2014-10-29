@@ -1,10 +1,43 @@
+<script>
+$(document).ready(function(){
+  $("#post_answer").submit(function(e){
+    var postData = $(this).serializeArray();
+    var formURL = $(this).attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,
+        success:function(result)
+        {
+          $("#content").html(result);
+          //debugger
+            //data: return data from server
+        },
+        error: function(jqXHR, textStatus, errorThrown)
+        {
+          //debugger
+            //if fails
+        }
+
+
+    });
+    e.preventDefault(); //STOP default action
+    e.unbind(); //unbind. to stop multiple form submit.
+  });
+
+
+});
+</script>
+
+<div id="content">
 <h4>Stats <%= @correct %>/<%= @total %></h4>
 <h4 style="color: <%= @color %>"><%= @message %> <%= @previous_answer %></h4><h5><%= @previous_question %></h5>
 
 <br>
 <br>
 
-<form action='/flashcards/<%= params[:id] %>/answer' method='post' role="form">
+<form id="post_answer" action='/flashcards/<%= params[:id] %>/answer' method='post' role="form">
   <h4><%= @next_question %></h4>
   <h4><%= @card.question %></h4>
   <div class="form-group">
@@ -15,5 +48,5 @@
 
   <button type="submit" name="submit" value="login" class="btn btn-default">Answer</button>
 </form>
-
+</div>
 

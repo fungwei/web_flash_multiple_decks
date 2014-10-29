@@ -8,6 +8,8 @@ get '/flashcards' do
     @rounds = user.rounds
 
 
+
+
   erb :'flashcards/index'
   end
 end
@@ -58,5 +60,5 @@ post '/flashcards/:id/answer' do
 
     @card = Deck.find(params[:id]).cards.sample
 
-    erb :'flashcards/guess'
+    erb :'flashcards/guess', :layout => false
 end

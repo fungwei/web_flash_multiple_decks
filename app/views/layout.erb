@@ -22,12 +22,19 @@
 <body>
 
   <div class="container">
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
     <% if session[:username] != nil %>
     <form action = "/users/logout" method="post">
       <input name="_method" value="delete" type="hidden">
+      <a href="/flashcards"><button type="button" class="btn btn-default navbar-btn">FlashCards Decks and My Stats</button></a>
       <button type="submit" name="submit" class="btn btn-default">Logout from <strong><%= session[:username] %></strong></button>
     </form>
   <% end %>
+
+</nav>
+
   <%= yield %>
   </div>
 </body>
