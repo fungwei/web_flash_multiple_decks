@@ -2,14 +2,14 @@
 
 get '/users/logout' do
   session[:username] = nil
-  redirect "/"
+  redirect "/?notice=logout_success"
 end
 
 
 post '/users' do
   if params[:submit] == "create"
     User.create(username: params[:username], password: params[:password])
-    redirect "/?create=success"
+    redirect "/?notice=success"
   else
     # byebug
     if User.valid?(params[:username])
@@ -19,10 +19,10 @@ post '/users' do
         session[:username] = params[:username]
         redirect "/flashcards"
       else
-        redirect "/?create=wrong_password"
+        redirect "/?notice=wrong_password"
       end
     else
-      redirect "/?create=no_account"
+      redirect "/?notice=no_account"
     end
   end
 
