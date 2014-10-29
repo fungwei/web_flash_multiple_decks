@@ -1,6 +1,6 @@
 
 
-get '/users/logout' do
+delete '/users/logout' do
   session[:username] = nil
   redirect "/?notice=logout_success"
 end

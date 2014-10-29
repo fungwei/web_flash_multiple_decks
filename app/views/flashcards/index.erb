@@ -6,3 +6,11 @@
 </div>
 <br>
 <% end %>
+
+
+<h2>My Stats</h2>
+<% count = 1 %>
+<% @rounds.each do |round| %>
+Round <%= count %> - <%= round.guesses.where(correct: true).length %>/<%= round.guesses.length %><br>
+<% count += 1 %>
+<% end %>

@@ -20,7 +20,14 @@
   <title></title>
 </head>
 <body>
+
   <div class="container">
+    <% if session[:username] != nil %>
+    <form action = "/users/logout" method="post">
+      <input name="_method" value="delete" type="hidden">
+      <button type="submit" name="submit" class="btn btn-default">Logout from <strong><%= session[:username] %></strong></button>
+    </form>
+  <% end %>
   <%= yield %>
   </div>
 </body>

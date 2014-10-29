@@ -3,5 +3,4 @@ class Guess < ActiveRecord::Base
   belongs_to :round
 
   validates :round_id, presence: true
-  validates :correct, presence: true
 end

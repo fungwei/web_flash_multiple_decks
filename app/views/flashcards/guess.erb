@@ -1,0 +1,19 @@
+<h4>Stats <%= @correct %>/<%= @total %></h4>
+<h4 style="color: <%= @color %>"><%= @message %> <%= @previous_answer %></h4><h5><%= @previous_question %></h5>
+
+<br>
+<br>
+
+<form action='/flashcards/<%= params[:id] %>/answer' method='post' role="form">
+  <h4><%= @next_question %></h4>
+  <h4><%= @card.question %></h4>
+  <div class="form-group">
+    <label for="inputAnswer">Your answer here</label>
+    <input name="answer" type="answer" class="form-control" id="inputAnswer" placeholder="Answer for question">
+    <input name="card_id" type="hidden" value="<%= @card.id %>">
+  </div>
+
+  <button type="submit" name="submit" value="login" class="btn btn-default">Answer</button>
+</form>
+
+
