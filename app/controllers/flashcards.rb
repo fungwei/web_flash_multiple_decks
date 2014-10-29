@@ -3,6 +3,7 @@ get '/flashcards' do
   if session[:username] == nil
     redirect "/?notice=no_login"
   else
+    @decks = Deck.all
   erb :'flashcards/index'
   end
 end

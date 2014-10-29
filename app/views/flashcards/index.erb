@@ -1,1 +1,8 @@
-FLASHCARDS =D =D
+<h1>All the awesome DECKS</h1>
+
+<% @decks.each do |deck| %>
+<div class="deck">
+ <h4><a href="/flashcards/<%= deck.id %>"><%= deck.title %></a></h4>
+</div>
+<br>
+<% end %>
